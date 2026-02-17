@@ -15,8 +15,7 @@ jobs:
         python-version: ['3.10', '3.11', '3.12']
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -29,11 +28,9 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run migrations
-  run: |
-    cd djangocicd
-    python manage.py migrate
+      working-directory: djangocicd
+      run: python manage.py migrate
 
     - name: Run tests
-  run: |
-    cd djangocicd
-    python manage.py test
+      working-directory: djangocicd
+      run: python manage.py test
