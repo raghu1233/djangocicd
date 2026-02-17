@@ -29,9 +29,11 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run migrations
-      run: |
-        python manage.py migrate
+  run: |
+    cd djangocicd
+    python manage.py migrate
 
     - name: Run tests
-      run: |
-        python manage.py test
+  run: |
+    cd djangocicd
+    python manage.py test
