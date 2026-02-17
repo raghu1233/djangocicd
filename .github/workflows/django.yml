@@ -1,4 +1,4 @@
-*name: Django CI
+name: Django CI
 
 on:
   push:
@@ -8,20 +8,17 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
-      max-parallel: 4
       matrix:
         python-version: ['3.10', '3.11', '3.12']
 
     steps:
-
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
@@ -37,4 +34,4 @@ jobs:
 
     - name: Run tests
       run: |
-        python manage.py test*
+        python manage.py test
